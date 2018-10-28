@@ -16,7 +16,7 @@ char* strcpy(char* dest, const char *src)
 	cout<<"dest : "<<dest<<endl;
 	cout<<"src : " <<src<<endl;
 	
-	//dlsym(RTLD_NEXT, "strcpy")`
+	origin_strcpy = (char * (*)(char*,const char*))dlsym(RTLD_NEXT, "strcpy");
 	rv = (*origin_strcpy)(dest,src);
 
 	return rv;
